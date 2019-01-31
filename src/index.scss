@@ -1,0 +1,25 @@
+@import '../node_modules/css-reset-and-normalize/scss/reset-and-normalize.scss';
+@import "scss/variables";
+
+html, body {
+	font-family: Verdana, sans-serif;
+	font-size: 16px;
+	line-height: 28px;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	color: $black;
+	background: $white;
+}
+
+h1 {
+	margin: 10px 0 20px;
+	font-size: 18px;
+	line-height: 20px;
+}
+
+h2 {
+	margin: 0 0 14px;
+	font-size: 14px;
+	line-height: 16px;
+}

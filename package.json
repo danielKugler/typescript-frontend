@@ -1,0 +1,45 @@
+{
+	"name": "ts-frontend",
+	"version": "1.0.0",
+	"author": "Daniel Kugler",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/danielKugler/typescript-frontend.git"
+	},
+	"scripts": {
+		"start": "run-s build:* && run-s watch",
+		"serve": "browser-sync start -s \"dist\" -f \"dist\" --startPath \"./\"",
+		"build": "run-s build:*",
+		"build:ts": "./node_modules/.bin/webpack --mode=development",
+		"build:assets": "copyfiles -u 1 \"src/**/*.html\" \"src/**/*.{png,jpg,gif,json}\" \"src/**/*.{ttf,woff,woff2}\" dist",
+		"build:scss": "node-sass --output-style expanded -r \"src\" -o \"dist\"",
+		"watch": "run-p serve watch:*",
+		"watch:scss": "onchange \"src/**/*.scss\" -- run-s build:scss",
+		"watch:assets": "onchange \"src/**/*.js\" \"src/**/*.html\" \"src/**/*.{png,jpg,gif,json}\" \"src/**/*.{ttf,woff,woff2}\" -- run-s build:assets",
+		"watch:ts": "onchange \"src/**/*.ts\" -- run-s build:ts",
+		"deploy": "run-s deploy:*",
+		"deploy:ts": "./node_modules/.bin/webpack --mode=production",
+		"deploy:assets": "copyfiles -u 1 \"src/**/*.html\" \"src/**/*.{png,jpg,gif,json}\" \"src/**/*.{ttf,woff,woff2}\" deploy",
+		"deploy:scss": "run-p node-sass --output-style compressed -r \"src\" -o \"deploy\"",
+		"docs": "./node_modules/.bin/typedoc --target ES5 --readme README.md --out docs src --module modules --excludeExternals"
+	},
+	"devDependencies": {
+		"awesome-typescript-loader": "5.2.1",
+		"browser-sync": "2.26.3",
+		"copyfiles": "2.1.0",
+		"moment": "2.23.0",
+		"node-sass": "4.11.0",
+		"npm-run-all": "4.1.5",
+		"onchange": "5.2.0",
+		"path": "0.12.7",
+		"tslint": "5.12.1",
+		"typedoc": "^0.14.2",
+		"typescript": "3.2.2",
+		"webpack": "4.28.4",
+		"webpack-cli": "3.2.1"
+	},
+	"dependencies": {
+		"css-reset-and-normalize": "1.0.1"
+	}
+}
