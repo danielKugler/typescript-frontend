@@ -1,6 +1,9 @@
 # TypeScript Frontend
 Frontend functionality in typescript without a framework.
 
+This is a demo of how an environment is set up to code frontend functionality in typescript
+A simple translation handling is done with i18n JSON files. Therefor a URL parameter is used to choose the language.  
+
 ## Requirement
 The following programs or modules are necessary:
 
